@@ -3,7 +3,7 @@ from accounts.models import *
 # Create your models here.
 class ProductCategory(models.Model):
     name = models.CharField(max_length=255,unique=True)
-    description = models.TextField(null=True, blank=True)
+    description = models.TextField(max_length=512)
 
     # timestamps
     created_at = models.DateTimeField(auto_now_add=True)
