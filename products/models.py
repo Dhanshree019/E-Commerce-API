@@ -38,15 +38,6 @@ class ProductReview(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-class Order(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)  
-    total_amount = models.DecimalField(max_digits=10 , decimal_places=2)
-    # status => pending | shipped | delivered | canceled
-    status = models.CharField(default='pending',max_length=256)
-
-     # timestamps
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
 
 

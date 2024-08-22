@@ -127,6 +127,8 @@ class GetProductView(APIView):
             return Response({"success":False,"message":"Unexpected error occurred!"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
 class ProductReviewView(APIView):
+
+    @transaction.atomic
     def post(self,request,id):
         try:
             rd = request.data
@@ -142,7 +144,8 @@ class ProductReviewView(APIView):
         except Exception as err :
             print("Error :",err)
             return Response({"success":False,"message":"Unexpected error occurred!"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-                
+
+    @transaction.atomic           
     def get(self,request,id):
         try:
             review_data = ProductReview.objects.filter(product=id)
